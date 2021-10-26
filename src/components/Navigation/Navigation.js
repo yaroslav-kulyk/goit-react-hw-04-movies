@@ -14,8 +14,7 @@ export default function Navigation() {
       </NavLink>
 
       <NavLink
-        exact
-        to="/hsdfklj"
+        to="/movies"
         className={styles.link}
         activeClassName={styles.activeLink}
       >

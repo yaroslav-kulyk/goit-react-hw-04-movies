@@ -2,8 +2,9 @@ import { Switch, Route } from 'react-router';
 import * as moviesAPI from './services/api-service';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
-import TrendingView from './views/HomePage';
-import MovieDetailsView from './views/MovieDetailsPage';
+import HomePage from './pages/HomePage';
+import MoviesPage from './pages/MoviesPage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
 import './App.css';
 
 function App() {
@@ -16,15 +17,15 @@ function App() {
       <AppBar />
       <Switch>
         <Route path="/" exact>
-          <TrendingView />
+          <HomePage />
         </Route>
 
         <Route path="/movies/" exact>
-          <p>It's a movies page</p>
+          <MoviesPage />
         </Route>
 
         <Route path="/movies/:movieId">
-          <MovieDetailsView />
+          <MovieDetailsPage />
         </Route>
       </Switch>
     </Container>

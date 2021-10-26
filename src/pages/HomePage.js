@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as moviesAPI from '../services/api-service';
 
-export default function TrendingView() {
+export default function HomePage() {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
