@@ -42,6 +42,11 @@ function fetchMovieReviews(movieId) {
   );
 }
 
+async function getConfig() {
+  const response = await fetch(`${BASE_URL}/configuration?api_key=${API_KEY}`);
+  return await response.json();
+}
+
 // function fetchTrending() {
 //   const searchParams = new URLSearchParams({
 //     api_key: API_KEY,
@@ -92,4 +97,5 @@ export {
   fetchMovieByQuery,
   fetchMovieCredits,
   fetchMovieReviews,
+  getConfig,
 };
