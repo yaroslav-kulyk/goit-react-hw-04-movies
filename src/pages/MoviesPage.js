@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
 import * as moviesAPI from '../services/api-service';
 
 export default function MoviesPage() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const { url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
   const [movies, setMovies] = useState(null);
+
+  const searchQuery = new URLSearchParams(location.search).get('query') ?? '';
+
+  const onFormSubmit = query => {
+    history.push({ ...location, search: `query=${query}` });
+  };
 
   useEffect(() => {
     if (!searchQuery) {
@@ -17,14 +25,14 @@ export default function MoviesPage() {
 
   return (
     <>
-      <SearchForm onSubmit={setSearchQuery} />
+      <SearchForm onSubmit={onFormSubmit} />
 
       {movies && (
         <div>
           <ul>
             {movies.results.map(movie => (
               <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
               </li>
             ))}
           </ul>

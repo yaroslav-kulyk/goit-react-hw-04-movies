@@ -9,8 +9,6 @@ export default function MovieDetailsPage() {
   const { url } = useRouteMatch();
   const [movie, setMovie] = useState(null);
 
-  console.log(url);
-
   useEffect(() => {
     moviesAPI.fetchMovieById(movieId).then(setMovie);
   }, [movieId]);
