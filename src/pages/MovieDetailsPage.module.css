@@ -1,0 +1,28 @@
+.button {
+  margin-bottom: 20px;
+}
+
+.movieCard {
+  display: flex;
+}
+
+.moviePoster {
+  margin-right: 16px;
+}
+
+.movieInfo {
+  flex-direction: column;
+}
+
+.movieTitle {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.movieGenres {
+  margin-right: 10px;
+}
+
+.credits {
+  margin-right: 8px;
+}

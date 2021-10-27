@@ -2,15 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
 import * as moviesAPI from '../services/api-service';
-import styles from './MoviesPage.module.css';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
   const history = useHistory();
   const location = useLocation();
   const [movies, setMovies] = useState(null);
-
-  moviesAPI.getConfig().then(console.log);
 
   const searchQuery = new URLSearchParams(location.search).get('query') ?? '';
 
@@ -35,12 +32,12 @@ export default function MoviesPage() {
           <ul>
             {movies.results.map(movie => (
               <li key={movie.id}>
-                <Link to={`${url}/${movie.id}`}>
-                  {/* <img
-                    src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    alt={movie.title}
-                    className={styles.moviePoster}
-                  /> */}
+                <Link
+                  to={{
+                    pathname: `${url}/${movie.id}`,
+                    state: { from: location },
+                  }}
+                >
                   {movie.title}
                 </Link>
               </li>

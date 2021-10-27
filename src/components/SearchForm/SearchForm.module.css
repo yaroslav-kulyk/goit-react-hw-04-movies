@@ -1,0 +1,15 @@
+.SearchBar {
+  text-align: center;
+}
+
+.SearchInput {
+  height: 24px;
+  width: 320px;
+
+  outline: none;
+}
+
+.SearchButton {
+  height: 30px;
+  width: 96px;
+}
