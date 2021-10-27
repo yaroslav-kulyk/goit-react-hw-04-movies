@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
+import { createPortal } from 'react-dom';
+import Loader from 'react-loader-spinner';
 import AppBar from './components/AppBar/AppBar';
 import Container from './components/Container/Container';
 
@@ -15,11 +17,20 @@ const MovieDetailsPage = lazy(() =>
   ),
 );
 
+const loaderRoot = document.querySelector('#loader-root');
+
 function App() {
   return (
     <Container>
       <AppBar />
-      <Suspense fallback={<h1>LOADING...</h1>}>
+      <Suspense
+        fallback={createPortal(
+          <div className="loader">
+            <Loader type="TailSpin" color="#e72962" height={100} width={100} />
+          </div>,
+          loaderRoot,
+        )}
+      >
         <Switch>
           <Route path="/" exact>
             <HomePage />
